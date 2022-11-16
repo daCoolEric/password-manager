@@ -1,20 +1,20 @@
 
 
 
-const getEmails = (req, res) => {
+const getEWallets = (req, res) => {
     res.json("All emails");
 }
 
-const addEmail = (req, res) => {
+const addEWallet = (req, res) => {
     res.json("Add email address");
 }
 
-const deleteEmail = (req, res) => {
+const deleteEWallet = (req, res) => {
     res.json("Remove email address");
 }
 
-const updateEmail = (req, res) => {
+const updateEWallet = (req, res) => {
     res.json("Update email address");
 }
 
-module.exports = { getEmails, addEmail, deleteEmail, updateEmail };
+module.exports = { getEWallets, addEWallet, deleteEWallet, updateEWallet };
