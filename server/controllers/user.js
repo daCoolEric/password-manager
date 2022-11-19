@@ -25,17 +25,20 @@ const signin = async (req, res) => {
   }
 };
 
+// creating a new user
 const signup = async (req, res) => {
-  const { email, password, firstName, lastName } = req.body;
+  const {firstname, lastname, email, password } = req.body;
 
   try {
     const oldUser = await UserModal.findOne({ email });
 
     if (oldUser) return res.status(400).json({ message: "User already exists" });
 
-    const hashedPassword = await bcrypt.hash(password, 12);
+    const salt = await bcrypt.genSalt(12);
 
-    const result = await UserModal.create({ email, password: hashedPassword, name: `${firstName} ${lastName}` });
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    const result = await UserModal.create({ firstname, lastname, email, password: hashedPassword});
 
     const token = jwt.sign( { email: result.email, id: result._id }, secret, { expiresIn: "1h" } );
 

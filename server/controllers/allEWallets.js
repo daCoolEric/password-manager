@@ -1,4 +1,4 @@
-
+const { encrypt, decrypt } = require("./EncryptionHandler");
 
 
 const getEWallets = (req, res) => {

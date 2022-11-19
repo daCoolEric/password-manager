@@ -1,3 +1,4 @@
+const { encrypt, decrypt } = require("./EncryptionHandler");
 
 const getEmails = (req, res) => {
     res.json("All emails");
