@@ -18,11 +18,11 @@ const EWallets = require('../controllers/allEWallets');
 const Favorites = require('../controllers/favorites');
 
 // all accounts srevices
-router.get("/all", getAllAccounts)
+router.get("/:userID/all", getAllAccounts)
 
 // email services
-router.get("/emails", Emails.getEmails);
-router.post("/emails", Emails.addEmail);
+router.get("/:userID/emails", Emails.getEmails);
+router.post("/:userID/emails/add-email", Emails.addEmail);
 router.patch("/emails/:emailID", Emails.updateEmail);
 router.delete("/emails/:emailID", Emails.deleteEmail);
 

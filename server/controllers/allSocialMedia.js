@@ -1,3 +1,4 @@
+const { encrypt, decrypt } = require("./EncryptionHandler");
 
 const getSocialMedia = (req, res) => {
     res.json("All Social Media");

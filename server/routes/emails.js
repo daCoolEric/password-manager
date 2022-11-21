@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const getEmails = require('../controllers/allEmails')
+const allEmails = require('../controllers/allEmails');
+
 
 router.get("/all", (req, res) => {
     res.json("Homepage");
 })
 
-router.get("/emails", getEmails)
+router.get("/emails", allEmails.getEmails);
+router.post("/emails/add-email", allEmails.addEmail);
 
 router.get("/social-media", (req, res) => {
     res.json("All social media accounts");

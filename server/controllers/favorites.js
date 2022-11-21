@@ -1,3 +1,4 @@
+
 const getFavorites = (req, res) => {
     res.json("All emails");
 }

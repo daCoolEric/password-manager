@@ -5,6 +5,7 @@ const UserModal = require( "../models/user.js");
 
 const secret = 'test';
 
+// logging in as a user
 const signin = async (req, res) => {
   const { email, password } = req.body;
 

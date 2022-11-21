@@ -23,5 +23,5 @@ mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology
 
 
 
-app.use("/api/user/:userID/accounts", accountsRoute);
+app.use("/api/user/accounts", accountsRoute);
 app.use("/api/user", userRoute)

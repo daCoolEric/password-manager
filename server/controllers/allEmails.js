@@ -1,11 +1,27 @@
 const { encrypt, decrypt } = require("./EncryptionHandler");
+const AccountModal = require( "../models/account.js");
 
-const getEmails = (req, res) => {
-    res.json("All emails");
+const getEmails = async (req, res) => {
+    const { userID } = req.params;
+    const accountName = "email";
+    const allEmails = await AccountModal.find({userID, accountName});
+
+  res.status(200).json(allEmails)
+    
 }
 
-const addEmail = (req, res) => {
-    res.json("Add email address");
+const addEmail = async (req, res) => {
+    req.body.userID = req.params.userID;
+    const { userID ,accountName, userName, password } = req.body;
+
+    try{
+    const newEmail = await AccountModal.create({ userID , accountName, userName, password });
+    console.log(req.params.userID);
+    res.status(201).json(newEmail);
+    }
+    catch(error){
+        console.log(error);
+    }
 }
 
 const deleteEmail = (req, res) => {
