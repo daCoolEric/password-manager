@@ -37,8 +37,19 @@ const deleteEWallet = async (req, res) => {
     res.status(200).json(allEWallets)
   }
 
-const updateEWallet = (req, res) => {
-    res.json("Update email address");
-}
+const updateEWallet = async (req, res) => {
+    const { id } = req.body
+    const { userID } = req.params
+  
+    const updatedEWallet = await AccountModal.findOneAndUpdate({_id: id, userID }, {
+      ...req.body
+    })
+  
+    if (!updatedEWallet) {
+      return res.status(400).json({error: 'No such e-wallet'})
+    }
+  
+    res.status(200).json("Update was successful!!!")
+  }
 
 module.exports = { getEWallets, addEWallet, deleteEWallet, updateEWallet };

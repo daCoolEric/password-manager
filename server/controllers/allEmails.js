@@ -37,8 +37,19 @@ const deleteEmail = async (req, res) => {
     res.status(200).json(allEmails)
   }
 
-const updateEmail = (req, res) => {
-    res.json("Update email address");
-}
+const updateEmail = async (req, res) => {
+    const { id } = req.body
+    const { userID } = req.params
+  
+    const updatedEmail = await AccountModal.findOneAndUpdate({_id: id, userID }, {
+      ...req.body
+    })
+  
+    if (!updatedEmail) {
+      return res.status(400).json({error: 'No such email'})
+    }
+  
+    res.status(200).json("Update was successful!!!")
+  }
 
 module.exports = { getEmails, addEmail, deleteEmail, updateEmail };

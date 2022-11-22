@@ -23,7 +23,7 @@ router.get("/:userID/all", getAllAccounts)
 // email services
 router.get("/:userID/emails", Emails.getEmails);
 router.post("/:userID/emails/add-email", Emails.addEmail);
-router.patch("/:userID/emails/:emailID", Emails.updateEmail);
+router.patch("/:userID/emails/update-email", Emails.updateEmail);
 router.delete("/:userID/emails/delete-email", Emails.deleteEmail);
 
 // social media services

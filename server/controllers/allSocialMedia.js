@@ -1,5 +1,6 @@
 const { encrypt, decrypt } = require("./EncryptionHandler");
 
+// read  
 const getSocialMedia = async (req, res) => {
     const { userID } = req.params;
     const accountName = "social-media";
@@ -8,6 +9,7 @@ const getSocialMedia = async (req, res) => {
   res.status(200).json(allSocialMedia)
 }
 
+// create
 const addSocialMedia = async (req, res) => {
     req.body.userID = req.params.userID;
     const { userID ,accountName, userName, password } = req.body;
@@ -21,6 +23,7 @@ const addSocialMedia = async (req, res) => {
     }
 }
 
+// delete 
 const deleteSocialMedia = async (req, res) => {
     const { id } = req.body
     const { userID } = req.params
@@ -34,8 +37,20 @@ const deleteSocialMedia = async (req, res) => {
     res.status(200).json(allSocialMedia)
   }
 
-const updateSocialMedia = (req, res) => {
-    res.json("Update email address");
-}
+// update  
+const updateSocialMedia = async (req, res) => {
+    const { id } = req.body
+    const { userID } = req.params
+  
+    const updatedSocialMedia = await AccountModal.findOneAndUpdate({_id: id, userID }, {
+      ...req.body
+    })
+  
+    if (!updatedSocialMedia) {
+      return res.status(400).json({error: 'No such social media'})
+    }
+  
+    res.status(200).json("Update was successful!!!")
+  }
 
 module.exports = { getSocialMedia, addSocialMedia, deleteSocialMedia, updateSocialMedia };
