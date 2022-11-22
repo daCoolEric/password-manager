@@ -23,26 +23,26 @@ router.get("/:userID/all", getAllAccounts)
 // email services
 router.get("/:userID/emails", Emails.getEmails);
 router.post("/:userID/emails/add-email", Emails.addEmail);
-router.patch("/emails/:emailID", Emails.updateEmail);
-router.delete("/emails/:emailID", Emails.deleteEmail);
+router.patch("/:userID/emails/:emailID", Emails.updateEmail);
+router.delete("/:userID/emails/delete-email", Emails.deleteEmail);
 
 // social media services
-router.get("/social-media", SocialMedia.getSocialMedia);
-router.post("/social-media", SocialMedia.addSocialMedia);
-router.patch("/social-media/:socialmediaID", SocialMedia.updateSocialMedia);
-router.delete("/social-media/:socialmediaID", SocialMedia.deleteSocialMedia);
+router.get("/:userID/social-media", SocialMedia.getSocialMedia);
+router.post("/:userID/social-media", SocialMedia.addSocialMedia);
+router.patch("/:userID/social-media/:socialmediaID", SocialMedia.updateSocialMedia);
+router.delete("/:userID/social-media/:socialmediaID", SocialMedia.deleteSocialMedia);
 
 // e-wallets services
-router.get("/e-wallets", EWallets.getEWallets);
-router.post("/e-wallets", EWallets.addEWallet);
-router.patch("/e-wallets/:ewalletID", EWallets.updateEWallet);
-router.delete("/e-wallets/:ewalletID", EWallets.deleteEWallet);
+router.get("/:userID/e-wallets", EWallets.getEWallets);
+router.post("/:userID/e-wallets", EWallets.addEWallet);
+router.patch("/:userID/e-wallets/:ewalletID", EWallets.updateEWallet);
+router.delete("/:userID/e-wallets/:ewalletID", EWallets.deleteEWallet);
 
 
 // favorite accounts services
-router.get("/favorites", Favorites.getFavorites);
-router.post("/favorites", Favorites.addFavorite);
-router.delete("/favorites/:accountID", Favorites.deleteFavorite);
+router.get("/:userID/favorites", Favorites.getFavorites);
+router.post("/:userID/favorites", Favorites.addFavorite);
+router.delete("/:userID/favorites/:accountID", Favorites.deleteFavorite);
 
 
 

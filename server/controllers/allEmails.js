@@ -24,9 +24,18 @@ const addEmail = async (req, res) => {
     }
 }
 
-const deleteEmail = (req, res) => {
-    res.json("Remove email address");
-}
+const deleteEmail = async (req, res) => {
+    const { id } = req.body
+    const { userID } = req.params
+  
+    const allEmails = await AccountModal.findOneAndDelete({ _id: id, userID })
+  
+    if(!allEmails) {
+      return res.status(400).json({error: 'No such email'})
+    }
+  
+    res.status(200).json(allEmails)
+  }
 
 const updateEmail = (req, res) => {
     res.json("Update email address");
