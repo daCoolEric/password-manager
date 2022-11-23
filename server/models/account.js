@@ -15,8 +15,8 @@ const accountSchema = new Schema({
     type: String,
     required: true
   },
-  password: {
-    type: String,
+  encryptedPassword: {
+    type: Object,
     required: true
   }
 }, { timestamps: true })
