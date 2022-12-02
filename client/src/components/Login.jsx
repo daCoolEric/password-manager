@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import bgImg from '../images/loginpath.png';
 import emailImg from '../images/email.png';
 import padlockImg from '../images/padlock.png';
-import userImg from '../images/user.png';
 
 const Wrapper = styled.div`
   // outline: 2px solid red;
@@ -53,7 +52,7 @@ const PersonalInfo = styled.div`
 `
 const EmailContainer = styled.div`
   // outline: 2px solid red;
-  width: 95%;
+  width: 90%;
   height: 45px;
   display: flex;
   justify-content: space-between;
@@ -72,15 +71,18 @@ const IconBox = styled.div`
 const InputContainer = styled.input`
   // outline: 2px solid red;
   height: 80%;
-  width: 88%;
-  font-size: 25px;
+  width: 87%;
+  font-size: 20px;
   color: #6a3cf7;
   border-style: none;
+  :focus{
+    outline: none;
+  }
   
 `
 const PasswordContainer = styled.div`
   // outline: 2px solid red;
-  width: 95%;
+  width: 90%;
   height: 45px;
   display: flex;
   justify-content: space-between;
@@ -141,11 +143,11 @@ function Login() {
         <LoginContent>
           <PersonalInfo>
             <EmailContainer>
-              <IconBox><img src={emailImg} alt="email icon" style={{ width: "100%" }} /></IconBox>
+              <IconBox><img src={emailImg} alt="email icon" style={{ width: "80%" }} /></IconBox>
               <InputContainer placeholder='Email'/>
             </EmailContainer>
             <PasswordContainer>
-            <IconBox><img src={padlockImg} alt="email icon" style={{ width: "100%" }} /></IconBox>
+            <IconBox><img src={padlockImg} alt="email icon" style={{ width: "80%" }} /></IconBox>
               <InputContainer placeholder='Password'/>
             </PasswordContainer>
             <ForgotPasswordContainer>

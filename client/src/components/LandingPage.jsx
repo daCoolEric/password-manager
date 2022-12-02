@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import bgImg from '../images/bg.png';
 import logo from '../images/logo.png'
@@ -112,12 +113,10 @@ function LandingPage() {
       </TextContainer>
       <ButtonContainer>
         <ButtonContent>
-          <Button style={{ backgroundColor: "#2a6cff" }}>Create new account</Button>
-          <Button style={{ backgroundColor: "#6a3cf7", border: "2px solid white" }}>Sign In</Button>
+          <Button style={{ backgroundColor: "#2a6cff" }}><Link to="/register" style={{textDecoration: "none"}}>Create new account </Link></Button>
+          <Button style={{ backgroundColor: "#6a3cf7", border: "2px solid white" }}><Link to="/login" style={{textDecoration: "none"}}>Sign In</Link></Button>
         </ButtonContent>
       </ButtonContainer>
-
-
     </Wrapper>
   )
 }
