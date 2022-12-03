@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const accountsRoute = require('./routes/accounts');
 const userRoute = require("./routes/users")
 
@@ -7,6 +8,7 @@ const userRoute = require("./routes/users")
 require('dotenv'). config();
 
 const app = express();
+app.use(cors())
 
 //middlewares
 app.use(express.json());

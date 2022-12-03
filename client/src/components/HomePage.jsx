@@ -5,6 +5,8 @@ import SideBar from '../features/SideBar';
 import AddPassword from '../features/AddPassword';
 import styled from 'styled-components';
 import bgImg from '../images/bg.png';
+import { useEffect } from 'react';
+import axios from 'axios';
 
 const Wrapper = styled.div`
   outline: 2px solid blue;
@@ -27,6 +29,9 @@ const SideBarContainer = styled.div`
 const NavBarContainer = styled.div`
   // outline: 2px solid red;
   height: 7%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
   
   
 `
@@ -42,7 +47,21 @@ const MainContainer = styled.div`
 
 `
 
+
+
+
 function HomePage() {
+  useEffect(() => {
+    async function getUser() {
+      try {
+        const response = await axios.get("http://localhost:5500/api/user/accounts/63789382cf03d9b2522a8345/all");
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getUser();
+  }, [])
   return (
     <Wrapper>
         <SideBarContainer>
