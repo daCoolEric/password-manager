@@ -148,7 +148,7 @@ function Login() {
             </EmailContainer>
             <PasswordContainer>
             <IconBox><img src={padlockImg} alt="email icon" style={{ width: "80%" }} /></IconBox>
-              <InputContainer placeholder='Password'/>
+              <InputContainer type='password' placeholder='Password'/>
             </PasswordContainer>
             <ForgotPasswordContainer>
               Forgot Password?

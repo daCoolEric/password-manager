@@ -135,25 +135,24 @@ function Register() {
           <PersonalInfo>
             <EmailContainer>
               <IconBox><img src={userImg} alt="email icon" style={{ width: "80%" }} /></IconBox>
-              <InputContainer placeholder='FirstName'/>
+              <InputContainer type='text' placeholder='FirstName'/>
             </EmailContainer>
             <PasswordContainer>
             <IconBox><img src={userImg} alt="email icon" style={{ width: "80%" }} /></IconBox>
-              <InputContainer placeholder='LastName'/>
+              <InputContainer type='text' placeholder='LastName'/>
             </PasswordContainer>
             <PasswordContainer>
             <IconBox><img src={emailImg} alt="email icon" style={{ width: "80%" }} /></IconBox>
-              <InputContainer placeholder='Email'/>
+              <InputContainer type= 'email' placeholder='Email'/>
             </PasswordContainer>
             <PasswordContainer>
             <IconBox><img src={padlockImg} alt="email icon" style={{ width: "80%" }} /></IconBox>
-              <InputContainer placeholder='Password'/>
+              <InputContainer type='password'   placeholder='Password'/>
             </PasswordContainer>
             <PasswordContainer>
             <IconBox><img src={padlockImg} alt="email icon" style={{ width: "80%" }} /></IconBox>
-              <InputContainer placeholder='Confirm Password'/>
+              <InputContainer type='password'  placeholder='Confirm Password'/>
             </PasswordContainer>
-            
             
           </PersonalInfo>
           <SubmitSection>
