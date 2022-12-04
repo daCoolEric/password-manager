@@ -5,6 +5,8 @@ import bgImg from '../images/loginpath.png';
 import emailImg from '../images/email.png';
 import padlockImg from '../images/padlock.png';
 import userImg from '../images/user.png';
+import axios from 'axios';
+import { useState } from 'react';
 
 const Wrapper = styled.div`
   // outline: 2px solid red;
@@ -127,6 +129,36 @@ const InfoSection = styled.div`
 
 
 function Register() {
+  const [firstname,setFirstName] = useState('');
+  const [lastname,setLastName] = useState('');
+  const [email,setEmail] = useState('');
+  const [password,setPassword] = useState('');
+  const [confirmPass,setConfirmPass] = useState('');
+  
+  const handleSubmit = () => {
+    if(password !== confirmPass){
+      alert("The two passwords are not the same");
+    }
+    async function createUser() {
+      try {
+        const response = await axios.post("http://localhost:5500/api/user/signup", {
+          firstname: firstname,
+          lastname: lastname,  
+          email: email,
+          password: password,
+        });
+        window.location = `/user/${response.data.result._id}/home`
+        
+        // console.log(response.status);
+        // setAllAccounts(response.data);
+      } catch (error) {
+        console.error(error);
+        // alert ("You dont have have account.");
+        console.log(error);
+      }
+    }
+    createUser();
+  }
   return (
     <Wrapper>
       <TextContainer>Create account</TextContainer>
@@ -135,28 +167,38 @@ function Register() {
           <PersonalInfo>
             <EmailContainer>
               <IconBox><img src={userImg} alt="email icon" style={{ width: "80%" }} /></IconBox>
-              <InputContainer type='text' placeholder='FirstName'/>
+              <InputContainer type='text' placeholder='FirstName'
+              onChange={(e) => {setFirstName(e.target.value)} }
+              />
             </EmailContainer>
             <PasswordContainer>
             <IconBox><img src={userImg} alt="email icon" style={{ width: "80%" }} /></IconBox>
-              <InputContainer type='text' placeholder='LastName'/>
+              <InputContainer type='text' placeholder='LastName'
+              onChange={(e) => {setLastName(e.target.value)}}
+              />
             </PasswordContainer>
             <PasswordContainer>
             <IconBox><img src={emailImg} alt="email icon" style={{ width: "80%" }} /></IconBox>
-              <InputContainer type= 'email' placeholder='Email'/>
+              <InputContainer type= 'email' placeholder='Email'
+              onChange={(e) => {setEmail(e.target.value)}}
+              />
             </PasswordContainer>
             <PasswordContainer>
             <IconBox><img src={padlockImg} alt="email icon" style={{ width: "80%" }} /></IconBox>
-              <InputContainer type='password'   placeholder='Password'/>
+              <InputContainer type='password'   placeholder='Password'
+              onChange={(e) => {setPassword(e.target.value)}}
+              />
             </PasswordContainer>
             <PasswordContainer>
             <IconBox><img src={padlockImg} alt="email icon" style={{ width: "80%" }} /></IconBox>
-              <InputContainer type='password'  placeholder='Confirm Password'/>
+              <InputContainer type='password'  placeholder='Confirm Password'
+              onChange={(e) => {setConfirmPass(e.target.value)}}
+              />
             </PasswordContainer>
             
           </PersonalInfo>
           <SubmitSection>
-            <LoginButton>Sign Up</LoginButton>
+            <LoginButton onClick={handleSubmit} >Sign Up</LoginButton>
             <InfoSection>Already have an account? <span style={{marginLeft: "10px", textDecoration: "none"}}> <Link to="/login" style={{textDecoration: "none"}}>Login</Link></span></InfoSection>
           </SubmitSection>
         </LoginContent>

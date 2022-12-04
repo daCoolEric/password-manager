@@ -81,24 +81,17 @@ function HomePage() {
             <NavBar />
           </NavBarContainer>
           <MainContainer>
-            {/* {allAccounts.map(account => {
+            {allAccounts.map(account => {
               return (
-                <div>
-                  <div>
-                    {account.accountName}
-                  </div>
-                  <div>
-                    {account.userName}
-                  </div>
-                  <div>
-                    {account.password}
-                  </div>
-
-                </div>
-                
+                <Password 
+                key = {account._id} 
+                accountName = {account.accountName}
+                userName = {account.userName}
+                password = {account.password}
+                /> 
               )
-            })} */}
-            <Password />
+            })}
+            
             <AddPassword />
           </MainContainer>
         </MainBarContainer>

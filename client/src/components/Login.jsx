@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import bgImg from '../images/loginpath.png';
 import emailImg from '../images/email.png';
 import padlockImg from '../images/padlock.png';
+import axios from 'axios';
+import { useState } from 'react';
 
 const Wrapper = styled.div`
   // outline: 2px solid red;
@@ -136,34 +138,55 @@ const InfoSection = styled.div`
 
 
 function Login() {
+  const [email,setEmail] = useState('');
+  const [password,setPassword] = useState('');
+ 
+  const submitLogin = () => {
+    async function authUser() {
+      try {
+        const response = await axios.post("http://localhost:5500/api/user/signin", {
+          email: email,
+          password: password,
+        });
+        window.location = `/user/${response.data.result._id}/home`
+        
+        // console.log(response.status);
+        // setAllAccounts(response.data);
+      } catch (error) {
+        console.error(error);
+        alert ("You dont have have account.");
+        console.log(error);
+      }
+    }
+    authUser();
+  }
   return (
-    <Wrapper>
+      <Wrapper>
       <TextContainer>Hello, Sign In</TextContainer>
       <LoginContainer>
         <LoginContent>
           <PersonalInfo>
             <EmailContainer>
               <IconBox><img src={emailImg} alt="email icon" style={{ width: "80%" }} /></IconBox>
-              <InputContainer placeholder='Email'/>
+              <InputContainer type='text' placeholder='Email' onChange={(e) => { setEmail(e.target.value) }}/>
             </EmailContainer>
             <PasswordContainer>
             <IconBox><img src={padlockImg} alt="email icon" style={{ width: "80%" }} /></IconBox>
-              <InputContainer type='password' placeholder='Password'/>
+              <InputContainer type='password' placeholder='Password'
+              onChange={(e) => { setPassword(e.target.value) }}
+              />
             </PasswordContainer>
             <ForgotPasswordContainer>
               Forgot Password?
             </ForgotPasswordContainer>
           </PersonalInfo>
           <SubmitSection>
-            <LoginButton>Sign In</LoginButton>
+            <LoginButton onClick={submitLogin}>Sign In</LoginButton>
             <InfoSection>Don't have an account? <span style={{marginLeft: "10px", textDecoration: "none"}}> <Link to="/register" style={{textDecoration: "none"}}>Sign Up</Link></span></InfoSection>
           </SubmitSection>
         </LoginContent>
       </LoginContainer>
-
-      
-      
-    </Wrapper>
+    </Wrapper>    
   )
 }
 

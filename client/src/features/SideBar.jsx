@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import logo from '../images/logo.png'
 import Email from './Email';
@@ -89,7 +90,10 @@ function SideBar() {
         
       </MenuContainer>
       <LogoutContainer>
+      <Link to="/login" style={{width: "100%", textDecoration: "none"}}>
         <Logout />
+      </Link>
+        
       </LogoutContainer>
     </Wrapper>
   )

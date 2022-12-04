@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import editImg from "../images/edit.png";
+import deleteImg from "../images/delete.png";
+import openEyeImg from "../images/eyeOpen.png";
 
 const Wrapper = styled.div`
     // outline: 2px solid blue;
@@ -16,7 +19,7 @@ const Wrapper = styled.div`
 
 `
 const LogoContainer = styled.div`
-    outline: 2px solid red;
+    // outline: 2px solid red;
     width: 13%;
     height: 80%;
     display: flex;
@@ -25,14 +28,14 @@ const LogoContainer = styled.div`
 
 `
 const Logo = styled.div`
-    outline: 2px solid red;
+    // outline: 2px solid red;
     width: 100%;
     height: 50%;
     display: flex;
 
 `
 const Fav = styled.div`
-    outline: 2px solid red;
+    // outline: 2px solid red;
     width: 100%;
     height: 50%;
     display: flex;
@@ -40,7 +43,7 @@ const Fav = styled.div`
 `
 
 const InfoContainer = styled.div`
-    outline: 2px solid yellow;
+    // outline: 2px solid yellow;
     width: 70%;
     height: 80%;
     display: flex;
@@ -48,59 +51,86 @@ const InfoContainer = styled.div`
 
 `
 const AccountNameContainer = styled.div`
-    outline: 2px solid pink;
+    // outline: 2px solid pink;
     width: 100%;
-    height: 60%;
+    height: 65%;
     display: flex;
     flex-direction: column;
 
 `
-const AccountDetailsContainer = styled.div`
-    outline: 2px solid blue;
+const AccountName = styled.div`
+    // outline: 2px solid pink;
     width: 100%;
-    height: 40%;
+    font-size: 20px;
+    font-weight: 600;
+    color: #000
+
+`
+const UserNameContainer = styled.div`
+    // outline: 2px solid pink;
+    width: 100%;
+    
+    
+
+`
+const AccountDetailsContainer = styled.div`
+    // outline: 2px solid blue;
+    width: 100%;
+    height: 35%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     flex-direction: row;
 
 `
-const UserNameContainer = styled.div`
 
-`
 const PasswordContainer = styled.div`
+    // outline: 2px solid blue;
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 `
 const VisibilityContainer = styled.div`
+    // outline: 2px solid blue;
+    width: 15%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 
 `
 const ActionContainer = styled.div`
-    outline: 2px solid blue;
+    // outline: 2px solid blue;
     width: 10%;
     height: 80%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
 
 `
 const EditContainer = styled.div`
-     outline: 2px solid red;
-    width: 100%;
-    height: 50%;
+    //  outline: 2px solid red;
+    width: 80%;
+    height: 40%;
     display: flex;
 
 `
 const DeleteContainer = styled.div`
-     outline: 2px solid red;
-    width: 100%;
-    height: 50%;
+    //  outline: 2px solid red;
+    width: 80%;
+    height: 40%;
     display: flex;
 
 `
 
 
-function Password() {
+function Password({userName, accountName, password}) {
+    
   return (
     <Wrapper>
         <LogoContainer>
@@ -109,18 +139,23 @@ function Password() {
         </LogoContainer>
         <InfoContainer>
             <AccountNameContainer>
-                Account Name
-                <UserNameContainer>UserName</UserNameContainer>
+                <AccountName>
+                    {accountName}
+                </AccountName>
+                <UserNameContainer>
+                    {userName}
+                </UserNameContainer>
             </AccountNameContainer>
-            
             <AccountDetailsContainer>
-                <PasswordContainer>Password</PasswordContainer>
-                <VisibilityContainer>Eye</VisibilityContainer>
+                <PasswordContainer>
+                    {password}
+                </PasswordContainer>
+                <VisibilityContainer><img src={openEyeImg} alt="" srcset="" style={{width: "100%"}} /></VisibilityContainer>
             </AccountDetailsContainer>
         </InfoContainer>
         <ActionContainer>
-            <EditContainer>Edit</EditContainer>
-            <DeleteContainer>Delete</DeleteContainer>  
+            <EditContainer><img src={editImg} alt="" srcset="" style={{width: "100%"}}/></EditContainer>
+            <DeleteContainer><img src={deleteImg} alt="" srcset="" style={{width: "100%"}}/></DeleteContainer>  
         </ActionContainer>
     </Wrapper>
 
