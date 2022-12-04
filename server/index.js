@@ -13,7 +13,7 @@ app.use(cors())
 //middlewares
 app.use(express.json());
 
-const PORT = 5500 || process.env.PORT;
+const PORT = process.env.PORT || 5500;
 
 
 mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true })

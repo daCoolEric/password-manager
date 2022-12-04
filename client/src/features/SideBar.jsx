@@ -82,8 +82,8 @@ function SideBar() {
         width: "70%"
       }}/></LogoContainer>
       <MenuContainer>
-        <SocialMediaContainer> <Social /> </SocialMediaContainer>
         <FavoriteContainer><Fav /></FavoriteContainer>
+        <SocialMediaContainer> <Social /> </SocialMediaContainer>
         <EmailContainer> <Email /> </EmailContainer>
         <EwalletContainer> <Ewallet />  </EwalletContainer>
         

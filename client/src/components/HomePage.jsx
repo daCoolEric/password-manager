@@ -1,5 +1,4 @@
 import React from 'react';
-import Main from '../features/Main';
 import NavBar from '../features/NavBar';
 import SideBar from '../features/SideBar';
 import AddPassword from '../features/AddPassword';
@@ -7,6 +6,8 @@ import styled from 'styled-components';
 import bgImg from '../images/bg.png';
 import { useEffect } from 'react';
 import axios from 'axios';
+import { useState } from 'react';
+import Password from '../features/Password';
 
 const Wrapper = styled.div`
   outline: 2px solid blue;
@@ -19,7 +20,7 @@ const Wrapper = styled.div`
 `
 const SideBarContainer = styled.div`
   // outline: 2px solid red;
-  width: 20%;
+  width: 15%;
   height: 100%;
   background: none;
 
@@ -38,12 +39,16 @@ const NavBarContainer = styled.div`
 const MainBarContainer = styled.div`
   // outline: 2px solid blue;
   width: 85%;
+  
   background-color: #fff;
 
 `
 const MainContainer = styled.div`
-  outline: 2px solid red;
+  // outline: 2px solid red;
   height: 93%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
 `
 
@@ -52,16 +57,20 @@ const MainContainer = styled.div`
 
 function HomePage() {
   useEffect(() => {
-    async function getUser() {
+    async function getAccounts() {
       try {
         const response = await axios.get("http://localhost:5500/api/user/accounts/63789382cf03d9b2522a8345/all");
         console.log(response.data);
+        setAllAccounts(response.data);
       } catch (error) {
         console.error(error);
       }
     }
-    getUser();
+    getAccounts();
   }, [])
+
+  const [allAccounts, setAllAccounts] = useState([]);
+  console.log(allAccounts);
   return (
     <Wrapper>
         <SideBarContainer>
@@ -72,7 +81,24 @@ function HomePage() {
             <NavBar />
           </NavBarContainer>
           <MainContainer>
-            <Main />
+            {/* {allAccounts.map(account => {
+              return (
+                <div>
+                  <div>
+                    {account.accountName}
+                  </div>
+                  <div>
+                    {account.userName}
+                  </div>
+                  <div>
+                    {account.password}
+                  </div>
+
+                </div>
+                
+              )
+            })} */}
+            <Password />
             <AddPassword />
           </MainContainer>
         </MainBarContainer>
