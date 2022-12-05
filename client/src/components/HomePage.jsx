@@ -8,6 +8,8 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { useState } from 'react';
 import Password from '../features/Password';
+import { useParams } from 'react-router-dom';
+
 
 const Wrapper = styled.div`
   outline: 2px solid blue;
@@ -52,14 +54,12 @@ const MainContainer = styled.div`
 
 `
 
-
-
-
 function HomePage() {
+  const { userid } = useParams();
   useEffect(() => {
     async function getAccounts() {
       try {
-        const response = await axios.get("http://localhost:5500/api/user/accounts/63789382cf03d9b2522a8345/all");
+        const response = await axios.get(`http://localhost:5500/api/user/accounts/${userid}/all`);
         console.log(response.data);
         setAllAccounts(response.data);
       } catch (error) {
@@ -67,7 +67,7 @@ function HomePage() {
       }
     }
     getAccounts();
-  }, [])
+  })
 
   const [allAccounts, setAllAccounts] = useState([]);
   console.log(allAccounts);
@@ -91,6 +91,7 @@ function HomePage() {
                 /> 
               )
             })}
+            
             
             <AddPassword />
           </MainContainer>

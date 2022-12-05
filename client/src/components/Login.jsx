@@ -142,15 +142,18 @@ function Login() {
   const [password,setPassword] = useState('');
  
   const submitLogin = () => {
+        
     async function authUser() {
       try {
         const response = await axios.post("http://localhost:5500/api/user/signin", {
           email: email,
           password: password,
         });
+
         window.location = `/user/${response.data.result._id}/home`
         
-        // console.log(response.status);
+        
+        // console.log(response.data.result._id);
         // setAllAccounts(response.data);
       } catch (error) {
         console.error(error);
