@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import NavBar from '../features/NavBar';
 import SideBar from '../features/SideBar';
 import AddPassword from '../features/AddPassword';
@@ -67,7 +68,7 @@ function HomePage() {
       }
     }
     getAccounts();
-  })
+  }, [userid])
 
   const [allAccounts, setAllAccounts] = useState([]);
   console.log(allAccounts);
@@ -92,8 +93,9 @@ function HomePage() {
               )
             })}
             
-            
+           <Link to={`/user/${userid}/add-password`} style={{ textDecoration: "none"}}>
             <AddPassword />
+           </Link> 
           </MainContainer>
         </MainBarContainer>
     </Wrapper>
